@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-import DataStructures.Array;
+import dataStructures.Array;
 
 public class Main
 {
@@ -9,10 +9,10 @@ public class Main
         try
         {
             Array integers = new Array(3);
-            int[] otherArr = {5, 3, 2};
-            integers.insert(1);
-            integers.insert(2);
-            integers.insert(3);
+            int[] otherArr = {5, 3};
+            integers.insert(5);
+            integers.insert(6);
+            integers.insert(7);
             int [] intersection = integers.intersect(otherArr);
             System.out.println(Arrays.toString(intersection));
             integers.print();

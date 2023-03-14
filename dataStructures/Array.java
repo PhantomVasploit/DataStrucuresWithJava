@@ -1,18 +1,9 @@
-package DataStructures;
+package dataStructures;
 
-import java.util.Arrays;
+import javax.lang.model.element.Element;
 
-interface ArrayInterface
-{
-    void print();
-    void insert(int item);
-    void removeAt(int index);
-    int indexOf(int item);
-    int max();
-    int[] intersect(int[] otherArr);
-    int[] reverse();
-    void insertAt(int index, int item);
-}
+import dataStructures.utils.ArrayInterface;
+
 
 public class Array implements ArrayInterface
 {
@@ -26,7 +17,25 @@ public class Array implements ArrayInterface
 
     public void print()
     {
-        System.out.println(Arrays.toString(intArr));
+        String items = "[";
+
+        for(int i =0; i<intArr.length; i++)
+        {
+            if(i == 0)
+            {
+                items += intArr[i] + ",";
+            }
+            else if(i == intArr.length-1)
+            {
+                items += " " + intArr[i];
+            }else
+            {
+                items += " " + intArr[i] + ",";
+            }
+        }
+
+        items += "]";
+        System.out.println(items);
     }
 
     public void insert(int item)
