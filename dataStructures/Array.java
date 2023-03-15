@@ -1,7 +1,5 @@
 package dataStructures;
 
-import javax.lang.model.element.Element;
-
 import dataStructures.utils.ArrayInterface;
 
 
@@ -19,13 +17,13 @@ public class Array implements ArrayInterface
     {
         String items = "[";
 
-        for(int i =0; i<intArr.length; i++)
+        for(int i =0; i<count; i++)
         {
             if(i == 0)
             {
                 items += intArr[i] + ",";
             }
-            else if(i == intArr.length-1)
+            else if(i == count-1)
             {
                 items += " " + intArr[i];
             }else
@@ -45,8 +43,8 @@ public class Array implements ArrayInterface
             intArr[count++] = item;
         } else
         {
-            int[] newArray = new int[intArr.length * 2];
-            for(int i = 0; i < intArr.length; i++)
+            int[] newArray = new int[count * 2];
+            for(int i = 0; i < count; i++)
             {
                 newArray[i] = intArr[i];
             }
@@ -56,9 +54,10 @@ public class Array implements ArrayInterface
 
     }
 
-    public void removeAt(int index)
+    public void removeAt(int index) throws IllegalArgumentException
     {
-        for(; index<intArr.length; index ++)
+        if(index < 0 || index > count) throw new IllegalArgumentException("Invalid index");
+        for(; index < count; index++)
         {
             if(index == (intArr.length-1))
             {
@@ -71,25 +70,22 @@ public class Array implements ArrayInterface
     }
 
     public int indexOf(int item)
-    {
-        for(int i = 0; i<intArr.length; i++)
+    {   
+        for(int i = 0; i<count; i++)
         {
-            if(item == intArr[i])
-            {
-                return i;
-            }
+            if(intArr[i] == item) return i;
         }
         return -1;
     }
 
     public int max ()
     {
-        int max = 0;
-        for(int i = 0; i < intArr.length; i++)
+        int max = intArr[0];
+        for(int i = 1; i < count; i++)
         {
-            if(i != 0)
+            if(intArr[i] > max)
             {
-                max = intArr[i] >= intArr[i-1] ? intArr[i] : intArr[i-1];
+                max = intArr[i];
             }
         }
         return max;
@@ -99,17 +95,20 @@ public class Array implements ArrayInterface
     {
         int length = intArr.length > otherArr.length ? otherArr.length : intArr.length;
         int[] intersection = new int[length];
-        
-        for(int i = 0; i < intArr.length; i++)
+        int seek = 0;
+
+        for(int element: intArr)
         {
-            for(int j = 0; j < otherArr.length; j++)
+            for(int element2: otherArr)
             {
-                if(intArr[i] == otherArr[j])
+                if(element == element2)
                 {
-                    intersection[i] = intArr[i];
+                    intersection[seek++] = element;
                 }
             }
         }
+
+
 
         return intersection;
     }
@@ -117,8 +116,8 @@ public class Array implements ArrayInterface
     public int[] reverse()
     {
         int seek = 0;
-        int[] reverse = new int[intArr.length];
-        for(int i = intArr.length -1; i>=0; i--)
+        int[] reverse = new int[count];
+        for(int i = count -1; i>=0; i--)
         {
             reverse[seek] = intArr[i];
             seek++;
@@ -129,7 +128,7 @@ public class Array implements ArrayInterface
 
     public void insertAt(int index, int item) throws IllegalArgumentException
     {
-        if(index > intArr.length)
+        if(index > count)
         {
             throw new IllegalArgumentException("Index is greater than the array length");
         }else
