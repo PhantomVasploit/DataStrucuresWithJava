@@ -1,6 +1,7 @@
-import java.util.Arrays;
+import java.util.Stack;
 
-import dataStructures.LinkedList;
+import useCases.Expression;
+import useCases.ReverseString;
 
 public class Main
 {
@@ -8,19 +9,18 @@ public class Main
     {
         try
         {
-            LinkedList list = new LinkedList();
-            list.addLast(10);
-            list.addLast(20);
-            list.addLast(30);
-            list.addFirst(40);
-            list.addFirst(50);
-            list.addFirst(60);  
-            list.removeFirst();
-            list.removeLast();
-            
-            System.out.println(Arrays.toString(list.toArray()));
-            list.reserve();
-            System.out.println(Arrays.toString(list.toArray()));
+            Expression expression = new Expression();
+            String exp = "(({1+2}))";
+            System.out.println(expression.isBalanced(exp));
+            ReverseString reverser = str ->
+            {
+                String reversed = "";
+                Stack<Character> stack = new Stack<>();
+                for(char ch: str.toCharArray()) stack.push(ch);
+                while(!stack.empty()) reversed += stack.pop();
+                return reversed;
+            };
+            System.out.println(reverser.reverse("Phantom"));
         }
         catch(Exception e)
         {
