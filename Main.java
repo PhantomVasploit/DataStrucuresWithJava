@@ -1,5 +1,6 @@
 import java.util.Stack;
 
+
 import useCases.Expression;
 import useCases.ReverseString;
 
@@ -9,6 +10,7 @@ public class Main
     {
         try
         {
+            
             Expression expression = new Expression();
             String exp = "(({1+2}))";
             System.out.println(expression.isBalanced(exp));
@@ -21,6 +23,7 @@ public class Main
                 return reversed;
             };
             System.out.println(reverser.reverse("Phantom"));
+            
         }
         catch(Exception e)
         {
