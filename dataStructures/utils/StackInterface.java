@@ -7,4 +7,5 @@ public interface StackInterface
     int peek();
     boolean isEmpty();
     void print();
+    int min();
 }

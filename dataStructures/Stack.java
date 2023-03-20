@@ -37,4 +37,17 @@ public class Stack implements StackInterface
     {
         return count == 0;
     }
+    public int min()
+    {
+        int minVal = items[count-1];
+        while(count > 0)
+        {
+            int current = pop();
+            if(current < minVal)
+            {
+                minVal = current;
+            }
+        }
+        return minVal;
+    }
 }
