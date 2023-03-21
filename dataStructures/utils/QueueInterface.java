@@ -6,5 +6,5 @@ public interface QueueInterface
     int dequeue();
     int peek();
     boolean isEmpty();
-    boolean isFull();
+    // boolean isFull();
 }
